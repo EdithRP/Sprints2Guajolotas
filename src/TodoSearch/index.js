@@ -2,6 +2,7 @@ import React from 'react';
 import './TodoSearch.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {FiSearch} from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 //import 'font-awesome/css/font-awesome.min.css';
 //import { FiSearch } from "react-icons/fa";
 
@@ -12,7 +13,6 @@ import {FiSearch} from 'react-icons/fi';
 function TodoSearch({searchvalue, setSearchValue}) {
   const onSearchValueChange=(event)=>{
     setSearchValue(event.target.value)
-   console.log(event.target.value)
   }
   return (
     <div>
@@ -21,7 +21,10 @@ function TodoSearch({searchvalue, setSearchValue}) {
       <div><input className="TodoSearch" 
     placeholder="Buscar" type="search" id="search" 
      value={searchvalue}
-    onChange={onSearchValueChange}/><strong>Cancelar</strong></div></div>
+    onChange={onSearchValueChange}/><strong>
+      <Link to={`/`}>
+      <span>Cancelar</span></Link>
+     </strong></div></div>
   )
   
 }

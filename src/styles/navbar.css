@@ -1,0 +1,23 @@
+*{
+    font-family: 'Inter', sans-serif;
+}
+ul{
+    text-decoration: none;
+    list-style: none;
+}
+nav ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+    padding-left: 0;
+    height: 100%;
+}
+nav li{
+    margin: 0;
+    padding: 0;
+}
+
+nav{
+    height: 100px;
+}
