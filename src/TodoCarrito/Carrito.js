@@ -1,45 +1,38 @@
 import React from 'react'
-import { Table } from 'react-bootstrap';
+import { url3 as endpoint } from '../App/url';
+import { useNavigate } from 'react-router-dom';
 
-export const Carrito = () => {   
+export const Carrito = ({datas}) => {
+    const navegar = useNavigate();
+    const limpiar = async () => {  
+        localStorage.setItem("carrito", [])
+        for (let index = 0; index < datas.length; index++) {
+           let ind = datas[index].id;
+            console.log(ind)
+            await fetch(endpoint+"/"+ind, {
+                method: 'DELETE'
+            })
+        }window.location.reload(true);}
+      
+        
+    
+    let id2=JSON.parse(localStorage.getItem("id"))
+    console.log(id2)
+    return (
 
-   
-    let data = localStorage.getItem("items")
-    let pagar=0;
-    let cantidad=0;  
-    let parsedItem=[]
-    if(!!data){
-    parsedItem = JSON.parse(localStorage.getItem("items"))
-    pagar = Object.values(parsedItem).reduce((acc, { cantidad, price }) => acc + 1* Number(price), 0)
-    cantidad = Object.values(parsedItem).reduce((acc, { cantidad }) => acc + 1, 0)}
-    console.log(data)
-    return(
-
-    <div className="container">
-                <Table striped bordered hover size="sm">
-                                  <thead>
-                                  <tr> 
-                                  <th>Imagen</th>
-                                  <th>Nombre</th>
-                                  <th>Precio</th>
-                                  <th>Cantidad</th>
-                                  </tr>
-                                  </thead>
-                                  {parsedItem.map(info => (
-        <tbody>
-        <td><img style={{height:"60px"}}  src={info.image} alt=""/> </td>
-        <td>{info.description}</td><td>${info.price}</td><td>{1}</td>
-        </tbody>))}
-                                 
-                                  <tfoot>
-                                  <td>Comprar todo</td>
-                                  <td></td>
-                                  <td>${pagar}</td>
-                                  <td>{cantidad}</td>
-                                  </tfoot>
-                                  </Table>
-                                  </div>
-)
+        <div className="container">
+            <button
+                className="btn btn-warning btm-sm float-end mx-2" key={id2}
+                onClick={() => navegar(`/detalle/${id2}`)}
+            >
+                {'<'}
+            </button>
+            {datas.map(info => (<>
+                <div><img style={{ height: "60px" }} src={info.imagen} alt="" /></div>
+                <h2>{info.nombreProducto}</h2><h3>${info.Precio}</h3><h3>{info.cantidad}</h3></>))}
+            <button onClick={() => limpiar()}>Comprar</button>
+        </div>
+    )
 
 
 

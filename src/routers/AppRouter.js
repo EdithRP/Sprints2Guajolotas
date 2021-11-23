@@ -9,18 +9,22 @@ import { Navbar } from '../AppPrincipal/Navbar.js';
 import axios from 'axios';
 import {Hero} from '../App/Hero.js'
 import {Detalle} from '../Tododetalle/Detalle'
+import {Carrito} from '../TodoCarrito/Carrito'
 import { url } from '../App/url.js';
 import { url2 } from '../App/url.js';
+import { url3 } from '../App/url.js';
 
 export const AppRouter = () => {
 
     const [todos, settodos] = useState([]);
     const [sabores, setsabores] = useState([]);
+    const [compras, setcompras] = useState([]);
 
 
     useEffect(() => {
         getData();
         getData2();
+        cargarDatos()
     }, [])
 
     const getData = () => {
@@ -41,6 +45,12 @@ export const AppRouter = () => {
                 console.log(error);
             })
     }
+
+    const cargarDatos = async () => {
+        const respuesta = await fetch(url3);
+        const datos = await respuesta.json();
+        setcompras(datos);
+    }
     //<Route exact path="/search/:id" element={<DetalleTarea detalle={tareas}/>} />
 
     return (
@@ -51,7 +61,7 @@ export const AppRouter = () => {
                     <Route exact path="/" element={<Hero datas={todos} />} />
                     <Route exact path="/search" element={<App datas={todos} />} />
                     <Route exact path="/detalle/:id" element={<Detalle detalle={todos} sabores={sabores} />} />
-                    <Route exact path="/carrito/" element={<App datas={todos} />} />
+                    <Route exact path="/carrito/" element={<Carrito datas={compras} />} />
 
 
                 </Routes>
