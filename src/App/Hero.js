@@ -11,14 +11,6 @@ const Hero = ({ datas }) => {
 
 
 
-  const getdata = () => {
-    let productos4 = datas.filter((p) => (p.TipoProducto === "Guajolota"))
-    return setProductos(productos4)
-  }
-
-  useEffect(() => {
-    getdata()
-  }, [])
 
   const handleCategory = (e) => {
     let productos4 = datas.filter((p) => (p.TipoProducto === e.target.id))
