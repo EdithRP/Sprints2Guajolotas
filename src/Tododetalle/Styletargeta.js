@@ -9,17 +9,19 @@ align-items: center;
 `
 
 export const StyleCard = styled.button`
-width:312px;
-height:112px;
-background-color:orange;
-display: flex;
-flex-direction: row;
-justify-content: flex-start;
-align-items: center;
-border-radius: 20px;
-margin-bottom: 8px;
-padding-left: 16px;
-border:none;
+ width:312px;
+  height: 69px;
+  border-radius: 40px;
+  display:block;
+  margin: 0 auto;
+  background-color:#FA4A0C;
+  border: none;
+  font-weight: 600;
+  font-size:1rem;
+  color: #FFFF;
+  margin-top: 190px;
+  position: fixed;
+  bottom: 10px;
 cursor:pointer;
 /* border: 1px solid red; */
 `

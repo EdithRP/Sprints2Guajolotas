@@ -26,6 +26,15 @@
       "Precio": 12,
       "Cantidad": 1,
       "imagen": "https://res.cloudinary.com/edithrincon/image/upload/v1636767559/samples/Guappjolotas/Bebidas/Bebidacafe_pvzwxf.png"
+    },
+    {
+      "id": 13,
+      "nombreProducto": "Chocolate Caliente",
+      "TipoProducto": "Bebida",
+      "SaborProducto": "Chocolate Caliente",
+      "Precio": 12,
+      "Cantidad": 1,
+      "imagen": "https://res.cloudinary.com/edithrincon/image/upload/v1636767559/samples/Guappjolotas/Bebidas/Bebidachocolate_igryui.png"
     }
   ]
 }

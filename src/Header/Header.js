@@ -1,6 +1,5 @@
 import React from 'react'
 import { BiCart } from "react-icons/bi";
-import { Header } from '../Header/HeaderStyle'
 
 import { Link } from 'react-router-dom'
 

@@ -13,7 +13,7 @@ margin-left: 8px;
     margin: 5px;
     display: inline-block;
       width: 152px;
-      height: 138px;
+      height: 158px;
     text-align: left;
     border-radius: 20px;
       background-color: #FFFF;
@@ -21,16 +21,23 @@ margin-left: 8px;
 }
 [type="checkbox"]{
     position: relative;
-    left: 120px;
-    bottom: 60px;
+    left: 32px;
+    bottom: 100px;
     /* border: 1px solid black; */
     
 }
+
  .items{
-    /* border: 1px solid green; */
-    /* flex-direction: row; */
-      /* width: 150px; */
- }   
+    display:flex;
+    flex-direction:row;
+  
+  
+ }  
+
+ .items img{
+  margin-left: 1%;
+  margin-top: 10px;
+ }
 .nombre{
     font-size:1rem;
     font-weight: 600;

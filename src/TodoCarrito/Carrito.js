@@ -2,6 +2,10 @@ import React, { useState } from 'react'
 import { url3 as endpoint } from '../App/url';
 import { useNavigate } from 'react-router-dom';
 import { Modal } from '../Modal/Modal';
+import { Header } from '../Header/HeaderStyle'
+import { Item2, Todoitem2, Precio } from '../TodoItem/styleitem';
+import { StyleContainer, StyleCard} from '../Tododetalle/Styletargeta'
+import { Estilocantidad } from '../styles/StyleBoton'
 
 
 export const Carrito = ({ datas }) => {
@@ -40,20 +44,20 @@ export const Carrito = ({ datas }) => {
     console.log(id2)
 
     return (
-
-        <div className="container">
-            <button
-                className="btn btn-warning btm-sm float-end mx-2" key={id2}
-                onClick={() => navegar(`/detalle/${id2}`)}
-            >
-                {'<'}
-            </button>
-
+  <div>
+        <Header>
+                <div
+                    className="volver"
+                    onClick={() => navegar(`/`)} >
+                    <strong style={{ cursor: "pointer" }}>{'<'}</strong>
+                </div>
+               </Header>
+           <StyleContainer>
             {datas.map(info => (<>
-                <div onClick={() => modaltrue(info.id)} ><img style={{ height: "60px" }} src={info.imagen} alt="" /></div>
-                <h2>{info.nombreProducto}</h2><h3>${info.Precio}</h3><h3>{info.Cantidad}</h3></>))}
-            <div>Total<span> ${total}</span></div>
-            <button onClick={() => limpiar()}>Comprar</button>
+                <div onClick={() => modaltrue(info.id)} > <Item2><Todoitem2><img style={{ height: "60px" }} src={info.imagen} alt="" />
+               <p><strong>{info.nombreProducto}</strong></p></Todoitem2><h3>X {info.Cantidad}</h3><Precio><h4>${info.Precio}</h4></Precio></Item2></div></>))}
+            <Estilocantidad><strong>Total $ {total}</strong></Estilocantidad>
+            <StyleCard onClick={() => limpiar()}>Pagar</StyleCard ></StyleContainer>
             {!!openModal && (
                 <Modal>
                     <p onClick={() => cerrar()}>x</p>

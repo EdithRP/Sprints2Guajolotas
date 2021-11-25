@@ -1,10 +1,8 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import { url3 as endpoint } from '../App/url';
-import { Link } from 'react-router-dom';
-import { BiCart } from "react-icons/bi";
 import '../index.css'
-import { Sabor } from "../Tododetalle/StyleDetalle"
+import { Sabor, Contenedor} from "../Tododetalle/StyleDetalle"
 import { Estilocantidad } from '../styles/StyleBoton'
 import { Header } from '../Header/HeaderStyle'
 import { Encabezado } from '../Header/Header';
@@ -157,11 +155,12 @@ const Detalle = ({ detalle, sabores }) => {
 
                 <h2>{text}</h2>
                 <h3>Selecciona la {text} que màs te guste y disfruta de tu desayuno</h3>
-                {arreglo.map((todo) => (
-                    <><img src={todo.imagen} width="100px" />
-                        <span>+ ${todo.Precio} MXN</span>
-                        <input type="checkbox" onChange={(e) => nuevoagregar(e)} id={todo.id} /></>
-                ))}
+                <Contenedor>{arreglo.map((todo) => (
+                    <> <div className="combo"><img src={todo.imagen} width="100px" />
+                        <span>{todo.nombreProducto}</span>
+                        <div className="items"> <span>+ ${todo.Precio} MXN</span>
+                        <input type="checkbox" onChange={(e) => nuevoagregar(e)} id={todo.id} /></div></div></>
+                ))}</Contenedor>
 
               
                 <StyleCard onClick={() => Carrito()}>

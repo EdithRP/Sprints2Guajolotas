@@ -15,14 +15,24 @@ export const Item = styled.div`
   padding: 16px;
 `
 
-
+export const Item2 = styled.div`
+   
+  display: flex;
+  direction:column;
+  height: 112px;
+  width: 100%;
+  cursor: pointer;
+  margin-top: 24px;
+  margin-right: 24px;
+  border-radius: 30px;
+  box-shadow: 0px 5px 50px rgba(32, 35, 41, 0.15);
+  padding: 16px;
+`
 
 export const Todoitem = styled.div`
  
  display: flex;
-
   background-color: white;
-
   margin:  auto;
 
 & img{
@@ -31,6 +41,21 @@ export const Todoitem = styled.div`
 
 }
 
+
+  `
+
+
+export const Todoitem2 = styled.div`
+
+ display: flex;
+  margin:  auto;
+  align-items: left;
+
+& img{
+  margin-right: 16px;
+  align-items: left;
+
+}
 
   `
 
@@ -47,7 +72,6 @@ export const Precio= styled.li`
     font-weight: 600;
     margin: 0;
    color:#FA4A0C;
-
   
 `
 
