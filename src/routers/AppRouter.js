@@ -5,7 +5,7 @@ import {
     Route
 } from 'react-router-dom';
 import App from '../App/index.js';
-import { Navbar } from '../AppPrincipal/Navbar.js';
+
 import axios from 'axios';
 import {Hero} from '../App/Hero.js'
 import {Detalle} from '../Tododetalle/Detalle'

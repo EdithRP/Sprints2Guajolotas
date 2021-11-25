@@ -151,13 +151,13 @@ const Detalle = ({ detalle, sabores }) => {
               <Sabor>
               <h2>Sabor</h2>
                 {saboresproducto.map((todo) => (
-                    <><img src={todo.imagen} onClick={(e) => cambiar(e)} className= {`${!!estilo&&'truesabor'}`} id={todo.SaborProducto} /></>
+                    <><img src={`${todo.imagen}`} onClick={(e) => cambiar(e)} className= {`${!!estilo&&'truesabor'}`} id={todo.SaborProducto} /></>
                 ))}</Sabor>
 
                 <h2>{text}</h2>
                 <h3>Selecciona la {text} que màs te guste y disfruta de tu desayuno</h3>
                 <Contenedor>{arreglo.map((todo) => (
-                    <> <div className="combo"><img src={todo.imagen}/>
+                    <> <div className="combo"><img src={`${todo.imagen}`}/>
                         <span>{todo.nombreProducto}</span>
                         <div className="items"> <span>+ ${todo.Precio} MXN</span>
                         <input type="checkbox" onChange={(e) => nuevoagregar(e)} id={todo.id} /></div></div></>
