@@ -90,8 +90,9 @@ const Detalle = ({ detalle, sabores }) => {
         if (productoselec.find((p) => (p.id === Number(nuevopro.id)))) {
             eliminado = productoselec.indexOf(productoselec.find((p) => (p.id === Number(nuevopro.id))))
             productoselec.splice(eliminado, 1)
-
-            return setproductoselec(productoselec), setcantidad(cantidad - nuevopro.Precio), setconteo(conteo - 1)
+            setcantidad(cantidad - nuevopro.Precio)
+            setconteo(conteo - 1)
+            return setproductoselec(productoselec)
         } else {
             let cantidad2 = Object.values(productoselec).reduce((acc, { Precio }) => acc + Precio, Number(nuevopro.Precio))
             let contar = Object.values(productoselec).reduce((acc, { Precio }) => acc + 1, Number(nuevopro.Precio))
@@ -150,13 +151,13 @@ const Detalle = ({ detalle, sabores }) => {
               <Sabor>
               <h2>Sabor</h2>
                 {saboresproducto.map((todo) => (
-                    <><img src={todo.imagen} width="100px" onClick={(e) => cambiar(e)} className= {`${!!estilo&&'truesabor'}`} id={todo.SaborProducto} /></>
+                    <><img src={todo.imagen} onClick={(e) => cambiar(e)} className= {`${!!estilo&&'truesabor'}`} id={todo.SaborProducto} /></>
                 ))}</Sabor>
 
                 <h2>{text}</h2>
                 <h3>Selecciona la {text} que màs te guste y disfruta de tu desayuno</h3>
                 <Contenedor>{arreglo.map((todo) => (
-                    <> <div className="combo"><img src={todo.imagen} width="100px" />
+                    <> <div className="combo"><img src={todo.imagen}/>
                         <span>{todo.nombreProducto}</span>
                         <div className="items"> <span>+ ${todo.Precio} MXN</span>
                         <input type="checkbox" onChange={(e) => nuevoagregar(e)} id={todo.id} /></div></div></>

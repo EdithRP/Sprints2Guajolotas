@@ -1,6 +1,5 @@
 import React from 'react';
 import './TodoSearch.js';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { FiSearch } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import { Todosearch, Search, Texto, Contenedor } from '../TodoSearch/TodoSearch';
