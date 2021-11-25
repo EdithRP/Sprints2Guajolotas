@@ -1,0 +1,49 @@
+{
+  "carrito": [
+    {
+      "id": 11,
+      "nombreProducto": "Champurrado",
+      "TipoProducto": "Bebida",
+      "SaborProducto": "Champurrado",
+      "Precio": 12,
+      "Cantidad": 1,
+      "imagen": "https://res.cloudinary.com/edithrincon/image/upload/v1636767559/samples/Guappjolotas/Bebidas/Bebidachampurrado_rnz7zc.png"
+    },
+    {
+      "id": 12,
+      "nombreProducto": "Atole de Arroz con Leche",
+      "TipoProducto": "Bebida",
+      "SaborProducto": "Atole de Arroz con Leche",
+      "Precio": 12,
+      "Cantidad": 1,
+      "imagen": "https://res.cloudinary.com/edithrincon/image/upload/v1636767559/samples/Guappjolotas/Bebidas/Bebidaarroz_eeim9e.png"
+    },
+    {
+      "id": 6,
+      "nombreProducto": "Guajolota de Tamal Verde",
+      "TipoProducto": "Guajolota",
+      "SaborProducto": "Verde",
+      "Precio": 25,
+      "Cantidad": 1,
+      "imagen": "https://res.cloudinary.com/edithrincon/image/upload/v1636767314/samples/Guappjolotas/Gujolotas/Guajoloteverde_k60924.png"
+    },
+    {
+      "id": 13,
+      "nombreProducto": "Chocolate Caliente",
+      "TipoProducto": "Bebida",
+      "SaborProducto": "Chocolate Caliente",
+      "Precio": 12,
+      "Cantidad": 1,
+      "imagen": "https://res.cloudinary.com/edithrincon/image/upload/v1636767559/samples/Guappjolotas/Bebidas/Bebidachocolate_igryui.png"
+    },
+    {
+      "id": 7,
+      "nombreProducto": "Guajolota de Tamal Mole",
+      "TipoProducto": "Guajolota",
+      "SaborProducto": "Mole",
+      "Precio": 25,
+      "Cantidad": 1,
+      "imagen": "https://res.cloudinary.com/edithrincon/image/upload/v1636767314/samples/Guappjolotas/Gujolotas/Guajolotemole_ysgr8m.png"
+    }
+  ]
+}

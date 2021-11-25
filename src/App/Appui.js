@@ -3,6 +3,7 @@ import { TodoSearch } from '../TodoSearch/index';
 import { TodoList } from '../TodoList/index';
 import { TodoItem } from '../TodoItem/index';
 import { FiSearch } from "react-icons/fi";
+import { Buscador, Textoloading} from '../TodoSearch/TodoSearch';
 
 function AppUI({
     loading,
@@ -20,8 +21,8 @@ function AppUI({
          setSearchValue={setSearchValue} />
   
         <TodoList>
-          {(!loading&&!searchedTodos.length&&<p>
-             <FiSearch style={{ width: "28px", height: "28px", }} />No hay resultados</p> )}
+        <Buscador>{(!loading&&!searchedTodos.length&&<p>
+             <FiSearch className="logobuscador"/><Textoloading>Realiza una busqueda</Textoloading></p> )}</Buscador>
           {searchedTodos.map(todo => (
             <TodoItem
               key={todo.nombreProducto}

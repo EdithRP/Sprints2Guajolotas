@@ -1,27 +1,24 @@
 import React from 'react';
-import './TodoItem.css';
+import { Item, Todoitem, Nombreproducto, Precio } from '../TodoItem/styleitem';
 import { Link } from 'react-router-dom';
+import '../index.css'
 
 function TodoItem(props) {
 
-
   return (
-     <li key={props.key} className="TodoItem" onClick=""><Link
-     to={`/detalle/${props.id}`} >
+    <Item>
+    <li key={props.key}><Link
+     className="link" to={`/detalle/${props.id}`} >
+       <Todoitem> 
+         
+         <img src={props.imagen} width={100} height={100} alt="" />
 
-        <span
-        >
-          <img src={props.imagen} width={100} height={100} className="imagen" alt="" />
-        </span>
-        <ul
-        >
-          <li className="nombreproducto"> {props.nombreProducto}</li>
-          <li className="Precio">
-            ${props.Precio} MXN
-          </li>
-        </ul>
+          <div><Nombreproducto><li> {props.nombreProducto}</li></Nombreproducto>
+          <Precio><li> ${props.Precio} MXN </li></Precio></div>
+          
+       </Todoitem>
         </Link>
-      </li>
+      </li></Item>
   );
 }
 

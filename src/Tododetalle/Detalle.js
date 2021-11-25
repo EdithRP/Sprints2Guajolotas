@@ -3,27 +3,33 @@ import React, { useState } from 'react';
 import { url3 as endpoint } from '../App/url';
 import { Link } from 'react-router-dom';
 import { BiCart } from "react-icons/bi";
+import '../index.css'
+import { Sabor } from "../Tododetalle/StyleDetalle"
+import { Estilocantidad } from '../styles/StyleBoton'
+import { Header } from '../Header/HeaderStyle'
+import { Encabezado } from '../Header/Header';
+import { StyleContainer, StyleCard, StyleDescripcion} from '../Tododetalle/Styletargeta'
+
 
 const Detalle = ({ detalle, sabores }) => {
-    console.log(sabores)
-    const [contador, setContador] = useState(1);
-
+    console.log(detalle)
+  
     const navegar = useNavigate();
-
     const params = useParams();
     const { id } = params;
     console.log(id)
     localStorage.setItem("id", JSON.stringify(id))
-  
-    let id2=JSON.parse(localStorage.getItem("id"))
+
+    let id2 = JSON.parse(localStorage.getItem("id"))
     console.log(id2)
-    
+
     let arreglo = []
     let saboresproducto = []
-    let encontrado=[]
+    let encontrado = []
     //Se encuentra el valor selecionado y de acuerdo a sus propiedades se crea los arreglos
     encontrado = detalle.find(producto => producto.id === Number(id2))
     console.log(encontrado)
+    
     const [buscado, setbuscado] = useState(encontrado);
     console.log(buscado)
     let text = ""
@@ -48,14 +54,17 @@ const Detalle = ({ detalle, sabores }) => {
     } else {
         productos = detalle.filter(productos => productos.TipoProducto === "Tamal")
     }
+    const [estilo, setestilo] = useState(false)
+  
 
     let nuevo = []
     const cambiar = (e) => {
-        console.log(e)
+        setestilo(!estilo);
+        console.log(e);
         nuevo = productos.find((p) => (p.SaborProducto === e.target.id));
         return setbuscado(nuevo)
     }
-
+    const [contador, setContador] = useState(1);
     const restar = () => {
         if (contador > 1) {
             return setContador(contador - 1);
@@ -72,7 +81,7 @@ const Detalle = ({ detalle, sabores }) => {
     let nuevopro = []
     let eliminado = 0;
     const [cantidad, setcantidad] = useState(0);
-
+    const [conteo, setconteo] = useState(0);
     const nuevoagregar = (e) => {
         console.log(e)
         const idn = e.target.attributes.getNamedItem("id").value
@@ -84,26 +93,25 @@ const Detalle = ({ detalle, sabores }) => {
             eliminado = productoselec.indexOf(productoselec.find((p) => (p.id === Number(nuevopro.id))))
             productoselec.splice(eliminado, 1)
 
-            return setproductoselec(productoselec), setcantidad(cantidad - nuevopro.Precio)
+            return setproductoselec(productoselec), setcantidad(cantidad - nuevopro.Precio), setconteo(conteo - 1)
         } else {
             let cantidad2 = Object.values(productoselec).reduce((acc, { Precio }) => acc + Precio, Number(nuevopro.Precio))
-            return setproductoselec([...productoselec, nuevopro], setcantidad(cantidad2)
+            let contar = Object.values(productoselec).reduce((acc, { Precio }) => acc + 1, Number(nuevopro.Precio))
+            return setproductoselec([...productoselec, nuevopro], setcantidad(cantidad2), setconteo(contar)
             )
         }
-
-
     }
-
-
     console.log(cantidad)
     let total = (contador * buscado.Precio) + cantidad
     let totalArreglo = []
+
 
     const Carrito = () => {
         totalArreglo = [...productoselec]
         buscado.Cantidad = contador;
         totalArreglo.push(buscado);
         localStorage.setItem('carrito', JSON.stringify(totalArreglo))
+        localStorage.setItem('conteo', JSON.stringify(conteo + 1))
         for (let i = 0; i < totalArreglo.length; i++) {
             fetch(endpoint, {
                 method: 'POST',
@@ -112,62 +120,57 @@ const Detalle = ({ detalle, sabores }) => {
                     'Content-Type': 'application/json; charset=utf-8'
                 }
             })
-        } 
+        }
     }
 
+    let contado = JSON.parse(localStorage.getItem("conteo"))
+
     return (
-        <div>
-            <Link to={`/carrito/`}>
-                <button className="Buttonnav">
-                    <BiCart style={{ width: "28px", height: "28px", }} />
-                    <span>9</span></button></Link>
-                    
-            <button
-                className="btn btn-warning btm-sm float-end mx-2"
-                onClick={() => navegar(`/`)}
-            >
-                {'<'}
-            </button>
-            <div className="container row row-cols-1 row-cols-md-5 g-4 py-5 text-center">
-                <div className="card text-white bg-dark ms-3 py-3"  >
+        <div >
+        
+            <Header>
+                <div
+                    className="volver"
+                    onClick={() => navegar(`/`)} >
+                    <strong style={{ cursor: "pointer" }}>{'<'}</strong>
+                </div>
+                <Encabezado contador={contado}></Encabezado></Header>
+            <StyleContainer>
                     <div className="">
                         <img src={imagen} className="img-fluid rounded-start" alt="..." width="200px" />
                     </div>
-                    <div className="row">
-                        <div className="col-md-12">
-                            <div className="card-body">
-                                <h5 className="card-title">{nombreProducto}</h5>
-                                <p className="card-title">${Precio} MXN</p>
-                                <div>
-                                    <div>
-                                        <button onClick={() => restar()}>-</button>{contador} <button onClick={() => sumar()}>+</button>
-                                    </div>
-                                    <h1>Sabor</h1>
-                                    {saboresproducto.map((todo) => (
-                                        <><img src={todo.imagen} width="100px" onClick={(e) => cambiar(e)} id={todo.SaborProducto} /></>
-                                    ))}
-                                </div>
-                                <h2>{text}</h2>
-                                <h3>Selecciona la {text} que màs te guste y disfruta de tu desayuno</h3>
-                                {arreglo.map((todo) => (
-                                    <><img src={todo.imagen} width="100px" />
-                                        <span>+ ${todo.Precio} MXN</span>
-                                        <input type="checkbox" onChange={(e) => nuevoagregar(e)} id={todo.id} /></>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
+                    <StyleDescripcion className="nombre">
+                        <h5>{nombreProducto}</h5>
+                    <p className="precio">${Precio} MXN</p>
+                </StyleDescripcion>
+                <Estilocantidad>
+                    <button className="boton" onClick={() => restar()}>-</button>
+                    <h1>{contador} </h1>
+                    <button className="boton" onClick={() => sumar()}>+</button>
+                </Estilocantidad>
+            
+              <Sabor>
+              <h2>Sabor</h2>
+                {saboresproducto.map((todo) => (
+                    <><img src={todo.imagen} width="100px" onClick={(e) => cambiar(e)} className= {`${!!estilo&&'truesabor'}`} id={todo.SaborProducto} /></>
+                ))}</Sabor>
 
-                    <button
-                        className="btn btn-warning btm-sm float-end mx-2"
-                        onClick={() => Carrito()}
-                    >
-                        Agregar {contador} al carrito ${total}
-                    </button>
-                </div>
+                <h2>{text}</h2>
+                <h3>Selecciona la {text} que màs te guste y disfruta de tu desayuno</h3>
+                {arreglo.map((todo) => (
+                    <><img src={todo.imagen} width="100px" />
+                        <span>+ ${todo.Precio} MXN</span>
+                        <input type="checkbox" onChange={(e) => nuevoagregar(e)} id={todo.id} /></>
+                ))}
 
-            </div>
-        </div>
+              
+                <StyleCard onClick={() => Carrito()}>
+                    Agregar {contador} al carrito ${total}
+                </StyleCard>
+          
+
+        </StyleContainer>
+     </div>
     )
 }
 export { Detalle }
