@@ -1,3 +1,31 @@
 {
-  "carrito": []
+  "carrito": [
+    {
+      "id": 9,
+      "nombreProducto": "Guajolota de Tamal Piña",
+      "TipoProducto": "Guajolota",
+      "SaborProducto": "Piña",
+      "Precio": 25,
+      "Cantidad": 3,
+      "imagen": "https://res.cloudinary.com/edithrincon/image/upload/v1636767314/samples/Guappjolotas/Gujolotas/Guajolotepi%C3%B1a_ta9pv3.png"
+    },
+    {
+      "id": 12,
+      "nombreProducto": "Atole de Arroz con Leche",
+      "TipoProducto": "Bebida",
+      "SaborProducto": "Atole de Arroz con Leche",
+      "Precio": 12,
+      "Cantidad": 1,
+      "imagen": "https://res.cloudinary.com/edithrincon/image/upload/v1636767559/samples/Guappjolotas/Bebidas/Bebidaarroz_eeim9e.png"
+    },
+    {
+      "id": 13,
+      "nombreProducto": "Chocolate Caliente",
+      "TipoProducto": "Bebida",
+      "SaborProducto": "Chocolate Caliente",
+      "Precio": 12,
+      "Cantidad": 1,
+      "imagen": "https://res.cloudinary.com/edithrincon/image/upload/v1636767559/samples/Guappjolotas/Bebidas/Bebidachocolate_igryui.png"
+    }
+  ]
 }
