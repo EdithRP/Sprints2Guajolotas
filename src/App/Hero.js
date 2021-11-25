@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { TodoList } from '../TodoList/index';
 import { TodoItem } from '../TodoItem/index';
