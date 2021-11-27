@@ -1,4 +1,4 @@
-import React, { useEffect, useState,  useLayoutEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { TodoList } from '../TodoList/index';
 import { TodoItem } from '../TodoItem/index';
@@ -8,13 +8,11 @@ import { Header } from '../Header/HeaderStyle'
 const Hero = ({ datas }) => {
   console.log(datas)
   const [productos, setProductos] = useState([])
-  const getdata = () => {
-    let productos4 = datas.filter((p) => (p.TipoProducto === "Guajolota"))
-    return setProductos(productos4)
-  }
+  
+ 
 
-  useLayoutEffect(() => {
-    getdata()
+  useEffect(() => {
+    setProductos(datas.filter((p) => (p.TipoProducto === "Guajolota")))
   }, [datas])
 
 
